@@ -13,6 +13,12 @@ public class Player : MonoBehaviour
     float xMax;
     float yMin;
     float yMax;
+    float fireProjectileSeconds = 0.1f;
+
+    // Globals
+    Coroutine fireCoroutine;
+    string fireButtonName = "Fire1";
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,11 +45,23 @@ public class Player : MonoBehaviour
 
     private void Fire()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown(fireButtonName))
         {
+            fireCoroutine = StartCoroutine(FireContinuously());
+        }
+        if (Input.GetButtonUp(fireButtonName))
+        {
+            StopCoroutine(fireCoroutine);
+        }
+    }
+
+    IEnumerator FireContinuously()
+    {
+        while (true) {
             GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
-        }
+            yield return new WaitForSeconds(fireProjectileSeconds);
+        };
     }
 
     private void Move()
