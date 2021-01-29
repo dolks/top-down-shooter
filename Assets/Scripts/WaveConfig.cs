@@ -15,7 +15,6 @@ public class WaveConfig : ScriptableObject
         {
             waypointsToAdd.Add(waypointTransform);
         }
-        Debug.Log("Test");
 
         return waypointsToAdd;
     }
