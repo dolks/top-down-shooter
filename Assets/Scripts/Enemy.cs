@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float hitpoints = 100;
+    [SerializeField] float hitpoints = 100f;
 
     // Start is called before the first frame update
     void Start()
