@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8331361345908219208}
   - component: {fileID: 8331361345908219207}
+  - component: {fileID: -1603017895757533853}
   m_Layer: 0
   m_Name: EnemyShip
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8331361345908219206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09, y: 2.28, z: -0.27684155}
+  m_LocalPosition: {x: 0.09, y: 2.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,3 +82,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-1603017895757533853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331361345908219206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c74546f76a6e45e4a7272e61b5559e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveConfig: {fileID: 11400000, guid: b0924101e121644859d3ef6aa9c64074, type: 2}
+  hitpoints: 100
+  moveSpeed: 5

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Enemy Wave Config")]
 public class WaveConfig : ScriptableObject
 {
     [SerializeField] GameObject pathPrefab;
     [SerializeField] GameObject enemyPrefab;
-    [SerializeField] int numberOfEnemies;
+    [SerializeField] int numberOfEnemies = 5;
+    [SerializeField] float moveSpeed = 2f;
 
     public List<Transform> GetWaypoints()
     {
