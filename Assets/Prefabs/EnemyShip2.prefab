@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 8331361345908219208}
   - component: {fileID: 8331361345908219207}
   - component: {fileID: -1603017895757533853}
+  - component: {fileID: -1137940417307773194}
+  - component: {fileID: 993691866}
   m_Layer: 0
-  m_Name: EnemyShip
+  m_Name: EnemyShip2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 339632f46c5894e93bb0319edcbebcd6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1b86682a84e674d29bb98dfa10782f95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,6 +96,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c74546f76a6e45e4a7272e61b5559e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveConfig: {fileID: 11400000, guid: b0924101e121644859d3ef6aa9c64074, type: 2}
-  hitpoints: 100
-  moveSpeed: 5
+--- !u!114 &-1137940417307773194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331361345908219206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 098a7660341a046e585c65219e5114c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitpoints: 300
+--- !u!58 &993691866
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331361345908219206}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.42

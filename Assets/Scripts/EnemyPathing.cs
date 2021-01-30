@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class EnemyPathing : MonoBehaviour
 {
-    [SerializeField] WaveConfig waveConfig;
-    [SerializeField] float hitpoints = 100;
-    [SerializeField] float moveSpeed = 1f;
+    WaveConfig waveConfig;
 
     List<Transform> waypoints;
     int waypointIndex = 0;
@@ -31,7 +29,7 @@ public class EnemyPathing : MonoBehaviour
         {
             var targetPosition = waypoints[waypointIndex].transform.position;
             Debug.Log("Getting target position" + targetPosition);
-            var movementThisFrame = Time.deltaTime * moveSpeed;
+            var movementThisFrame = Time.deltaTime * waveConfig.GetMoveSpeed();
             Debug.Log("Current position" + transform.position);
             transform.position = Vector2.MoveTowards(
                 transform.position,
@@ -49,6 +47,11 @@ public class EnemyPathing : MonoBehaviour
             Debug.Log("Resetting to 0");
             waypointIndex = 0;
         }
+    }
+
+    public void setWaveConfig(WaveConfig waveConfig)
+    {
+        this.waveConfig = waveConfig;
     }
 
 }
