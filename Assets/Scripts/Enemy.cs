@@ -48,12 +48,14 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
+        if (!damageDealer) { return; }
         ProcessHit(damageDealer);
     }
 
     private void ProcessHit(DamageDealer damageDealer)
     {
         hitpoints -= damageDealer.GetDamage();
+        damageDealer.Hit();
         if (hitpoints <= 0)
         {
             Destroy(gameObject);

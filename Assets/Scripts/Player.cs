@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Configuration
+    [SerializeField] int hitpoints = 300;
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float playerPadding = 0.5f;
     [SerializeField] GameObject laserPrefab;
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour
     float yMin;
     float yMax;
     float fireProjectileSeconds = 0.1f;
+
 
     // Globals
     Coroutine fireCoroutine;
@@ -71,5 +73,22 @@ public class Player : MonoBehaviour
         var newXPos = Mathf.Clamp(transform.position.x + deltaX, xMin, xMax);
         var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
         transform.position = new Vector2(newXPos, newYPos);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
+        if (!damageDealer) { return; }
+        ProcessHit(damageDealer);
+    }
+
+    private void ProcessHit(DamageDealer damageDealer)
+    {
+        hitpoints -= damageDealer.GetDamage();
+        damageDealer.Hit();
+        if (hitpoints <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

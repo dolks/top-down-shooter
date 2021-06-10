@@ -20,7 +20,7 @@ public class EnemyPathing : MonoBehaviour
     void Update()
     {
         Move();
-        Debug.Log("waypoints:" + waypoints.Count);
+        //Debug.Log("waypoints:" + waypoints.Count);
     }
 
     private void Move()
@@ -28,15 +28,12 @@ public class EnemyPathing : MonoBehaviour
         if (waypointIndex <= waypoints.Count - 1)
         {
             var targetPosition = waypoints[waypointIndex].transform.position;
-            Debug.Log("Getting target position" + targetPosition);
             var movementThisFrame = Time.deltaTime * waveConfig.GetMoveSpeed();
-            Debug.Log("Current position" + transform.position);
             transform.position = Vector2.MoveTowards(
                 transform.position,
                 targetPosition,
                 movementThisFrame
             );
-            Debug.Log("Transform pos after moving" + transform.position);
             if (transform.position == targetPosition)
             {
                 waypointIndex++;
@@ -44,7 +41,6 @@ public class EnemyPathing : MonoBehaviour
         }
         else
         {
-            Debug.Log("Resetting to 0");
             waypointIndex = 0;
         }
     }
