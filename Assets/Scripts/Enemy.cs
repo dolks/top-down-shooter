@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float projectileSpeed = -3f;
+    [SerializeField] GameObject explosionParticleSystem;
 
 
     // Start is called before the first frame update
@@ -59,6 +60,9 @@ public class Enemy : MonoBehaviour
         if (hitpoints <= 0)
         {
             Destroy(gameObject);
+            GameObject explosion = Instantiate<GameObject>(explosionParticleSystem, transform.position, Quaternion.identity);
+            Destroy(explosion, 1f);
         }
     }
+
 }
