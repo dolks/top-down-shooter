@@ -118,6 +118,10 @@ MonoBehaviour:
   projectileSpeed: -3
   explosionParticleSystem: {fileID: 3158505441018659426, guid: 3af995f63927242f293e0664f036ace0,
     type: 3}
+  shootSound: {fileID: 8300000, guid: a5bbf9613133a40718aa981de1eba2c5, type: 3}
+  shootSoundVolume: 0.5
+  deathSound: {fileID: 8300000, guid: bf03cd90b25a9488e8d0c79ab67a0b22, type: 3}
+  deathSoundVolume: 5
 --- !u!58 &-5364946039414375309
 CircleCollider2D:
   m_ObjectHideFlags: 0

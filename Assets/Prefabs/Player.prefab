@@ -102,6 +102,10 @@ MonoBehaviour:
   laserPrefab: {fileID: 6094758657852660267, guid: 4ae1afef349e8441db96c4706b6a42ad,
     type: 3}
   projectileSpeed: 10
+  shootSound: {fileID: 8300000, guid: 6fef3692eb8134a2e9519f740788e8fe, type: 3}
+  shootSoundVolume: 0.3
+  deathSound: {fileID: 8300000, guid: 925d8dfded44a43ef885292fdde4045d, type: 3}
+  deathSoundVolume: 1
 --- !u!60 &3819758097104782766
 PolygonCollider2D:
   m_ObjectHideFlags: 0
