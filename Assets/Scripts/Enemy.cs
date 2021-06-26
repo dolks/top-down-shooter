@@ -15,12 +15,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] [Range(0, 1)] float shootSoundVolume = 0.5f;
     [SerializeField] AudioClip deathSound;
     [SerializeField] [Range(0, 5)] float deathSoundVolume = 5f;
+    [SerializeField] float scoreWhenDestroyed = 100f;
+
+    GameSession gameSession;
 
 
     // Start is called before the first frame update
     void Start()
     {
         resetShotCounter();
+        gameSession = FindObjectOfType<GameSession>();
     }
 
     // Update is called once per frame
@@ -68,6 +72,7 @@ public class Enemy : MonoBehaviour
             GameObject explosion = Instantiate<GameObject>(explosionParticleSystem, transform.position, Quaternion.identity);
             AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
             Destroy(explosion, 1f);
+            gameSession.UpdateScore(scoreWhenDestroyed);
         }
     }
 
