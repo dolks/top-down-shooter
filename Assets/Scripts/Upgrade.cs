@@ -19,14 +19,13 @@ public class Upgrade : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("upgradeType" + upgradeType.Substring(0, upgradeType.Length - 7));
         Destroy(gameObject);
+        // Need to remove the "(Clone)" that gets added to the copy
+        // of the prefab name for the upgrade object
         switch (upgradeType.Substring(0, upgradeType.Length - 7))
         {
             case SHIELD_UPGRADE:
-
                 player.upgradeShield();
-                Debug.Log("Destroying object");
                 break;
             default:
                 break;
