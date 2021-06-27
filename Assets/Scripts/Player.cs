@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     float yMin;
     float yMax;
     float fireProjectileSeconds = 0.1f;
+    int shield;
 
     GameSession gameSession;
     SpriteRenderer spriteRenderer;
@@ -96,9 +97,14 @@ public class Player : MonoBehaviour
 
     private void ProcessHit(DamageDealer damageDealer)
     {
+        if (shield > 0)
+        {
+            shield--;
+            return;
+        }
         int damageTaken = hitpoints - damageDealer.GetDamage();
         flash();
-        Invoke("resetColor", flashingTime);
+        Invoke(nameof(resetColor), flashingTime);
         if (damageTaken < 0)
         {
             hitpoints = 0;
@@ -127,6 +133,11 @@ public class Player : MonoBehaviour
     private void flash()
     {
         spriteRenderer.color = new Color(255, 0, 0);
+    }
+
+    public void upgradeShield()
+    {
+        shield++;
     }
 
     private void Die()

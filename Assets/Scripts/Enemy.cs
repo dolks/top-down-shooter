@@ -22,7 +22,6 @@ public class Enemy : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Color originalColor;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -72,7 +71,7 @@ public class Enemy : MonoBehaviour
         hitpoints -= damageDealer.GetDamage();
         damageDealer.Hit();
         flash();
-        Invoke("resetColor", flashingTime);
+        Invoke(nameof(resetColor), flashingTime);
         if (hitpoints <= 0)
         {
             Die();
@@ -96,6 +95,16 @@ public class Enemy : MonoBehaviour
         AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
         Destroy(explosion, 1f);
         gameSession.UpdateScore(scoreWhenDestroyed);
+        dropUpgrade();
+    }
+
+    private void dropUpgrade()
+    {
+        int randomNumber = Random.Range(1, 10);
+        if (randomNumber <= 4)
+        {
+            Instantiate<GameObject>(gameSession.GetShieldUpgradePrefab(), transform.position, Quaternion.identity);
+        }
     }
 
 }

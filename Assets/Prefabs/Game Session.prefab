@@ -43,3 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab9ea5e37b7b46cfae0c274f4a9189f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldUpgradePrefab: {fileID: 6493198374766103211, guid: b7bcda8dfe4064600a23a90a7a123bf0,
+    type: 3}
+  weaponUpgradePrefab: {fileID: 0}
+  healthUpgradePrefab: {fileID: 0}
