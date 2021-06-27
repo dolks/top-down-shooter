@@ -89,12 +89,25 @@ public class Player : MonoBehaviour
 
     private void ProcessHit(DamageDealer damageDealer)
     {
-        hitpoints -= damageDealer.GetDamage();
+        int damageTaken = hitpoints - damageDealer.GetDamage();
+        if (damageTaken < 0)
+        {
+            hitpoints = 0;
+        }
+        else
+        {
+            hitpoints = damageTaken;
+        }
         damageDealer.Hit();
         if (hitpoints <= 0)
         {
             Die();
         }
+    }
+
+    public float GetHitPoints()
+    {
+        return hitpoints;
     }
 
     private void Die()
