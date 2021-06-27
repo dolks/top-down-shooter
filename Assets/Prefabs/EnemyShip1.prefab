@@ -124,6 +124,9 @@ MonoBehaviour:
   shootSoundVolume: 0.5
   deathSound: {fileID: 8300000, guid: bf03cd90b25a9488e8d0c79ab67a0b22, type: 3}
   deathSoundVolume: 5
+  scoreWhenDestroyed: 100
+  numberOfFlashes: 1
+  timeBetweenFlashes: 0.15
 --- !u!58 &-5364946039414375309
 CircleCollider2D:
   m_ObjectHideFlags: 0

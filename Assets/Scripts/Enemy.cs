@@ -16,8 +16,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] AudioClip deathSound;
     [SerializeField] [Range(0, 5)] float deathSoundVolume = 5f;
     [SerializeField] float scoreWhenDestroyed = 100f;
+    [SerializeField] float flashingTime = 0.1f;
 
     GameSession gameSession;
+    SpriteRenderer spriteRenderer;
+    Color originalColor;
 
 
     // Start is called before the first frame update
@@ -25,6 +28,8 @@ public class Enemy : MonoBehaviour
     {
         resetShotCounter();
         gameSession = FindObjectOfType<GameSession>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
     }
 
     // Update is called once per frame
@@ -66,14 +71,31 @@ public class Enemy : MonoBehaviour
     {
         hitpoints -= damageDealer.GetDamage();
         damageDealer.Hit();
+        flash();
+        Invoke("resetColor", flashingTime);
         if (hitpoints <= 0)
         {
-            Destroy(gameObject);
-            GameObject explosion = Instantiate<GameObject>(explosionParticleSystem, transform.position, Quaternion.identity);
-            AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
-            Destroy(explosion, 1f);
-            gameSession.UpdateScore(scoreWhenDestroyed);
+            Die();
         }
+    }
+
+    private void resetColor()
+    {
+        spriteRenderer.color = originalColor;
+    }
+
+    private void flash()
+    {
+        spriteRenderer.color = new Color(255, 0, 0);
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+        GameObject explosion = Instantiate<GameObject>(explosionParticleSystem, transform.position, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
+        Destroy(explosion, 1f);
+        gameSession.UpdateScore(scoreWhenDestroyed);
     }
 
 }

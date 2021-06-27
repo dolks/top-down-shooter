@@ -15,11 +15,16 @@ public class Player : MonoBehaviour
     [SerializeField] [Range(0,1)] float shootSoundVolume = 0.3f;
     [SerializeField] AudioClip deathSound;
     [SerializeField] [Range(0, 1)] float deathSoundVolume = 1f;
+    [SerializeField] float flashingTime = 0.1f;
     float xMin;
     float xMax;
     float yMin;
     float yMax;
     float fireProjectileSeconds = 0.1f;
+
+    GameSession gameSession;
+    SpriteRenderer spriteRenderer;
+    Color originalColor;
 
 
     // Globals
@@ -30,6 +35,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         SetUpMoveBoundaries();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
     }
 
     private void SetUpMoveBoundaries()
@@ -90,6 +97,8 @@ public class Player : MonoBehaviour
     private void ProcessHit(DamageDealer damageDealer)
     {
         int damageTaken = hitpoints - damageDealer.GetDamage();
+        flash();
+        Invoke("resetColor", flashingTime);
         if (damageTaken < 0)
         {
             hitpoints = 0;
@@ -108,6 +117,16 @@ public class Player : MonoBehaviour
     public float GetHitPoints()
     {
         return hitpoints;
+    }
+
+    private void resetColor()
+    {
+        spriteRenderer.color = originalColor;
+    }
+
+    private void flash()
+    {
+        spriteRenderer.color = new Color(255, 0, 0);
     }
 
     private void Die()
