@@ -101,7 +101,7 @@ public class Enemy : MonoBehaviour
     private void dropUpgrade()
     {
         int randomNumber = Random.Range(1, 10);
-        if (randomNumber <= 4)
+        if (randomNumber <= 1)
         {
             Instantiate<GameObject>(gameSession.GetShieldUpgradePrefab(), transform.position, Quaternion.identity);
         }

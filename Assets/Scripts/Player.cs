@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip deathSound;
     [SerializeField] [Range(0, 1)] float deathSoundVolume = 1f;
     [SerializeField] float flashingTime = 0.1f;
+    [SerializeField] int maxShieldAmount = 3;
     float xMin;
     float xMax;
     float yMin;
@@ -137,7 +138,10 @@ public class Player : MonoBehaviour
 
     public void upgradeShield()
     {
-        shield++;
+        if (shield < maxShieldAmount)
+        {
+            shield++;
+        }
     }
 
     private void Die()
